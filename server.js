@@ -5,7 +5,7 @@ const server = http.createServer((req, res) => {
   // console.log(req);
   console.log(req.url);
 
-  // set header content type
+  // 設定內容的類型
   res.setHeader('Content-Type', 'text/html');
 
   // res.write('<p>hello, ninjas</p>');
@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
   //   res.end(data);
   // });
 
-  // routing
+  // 路徑
   let path = './views/';
   switch(req.url) {
     case '/':
@@ -43,7 +43,7 @@ const server = http.createServer((req, res) => {
       res.statusCode = 404;
   }
 
-  // send html
+  // 傳送html檔案
   fs.readFile(path, (err, data) => {
     if (err) {
       console.log(err);
@@ -56,7 +56,7 @@ const server = http.createServer((req, res) => {
 
 });
 
-// localhost is the default value for 2nd argument
+// 本地主機為第二個參數
 server.listen(3000, 'localhost', () => {
   console.log('listening for requests on port 3000');
 });
