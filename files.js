@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// reading files
+// 讀取檔案
 fs.readFile('./docs/blog.txt', (err, data) => {
   if (err) {
     console.log(err);
@@ -8,9 +8,7 @@ fs.readFile('./docs/blog.txt', (err, data) => {
   console.log(data.toString());
 });
 
-// console.log('last line');
-
-// writing files
+// 撰寫檔案
 fs.writeFile('./docs/blog.txt', 'hello, world', () => {
   console.log('file was written');
 });
@@ -19,7 +17,7 @@ fs.writeFile('./docs/blog2.txt', 'hello, again', () => {
   console.log('file was written');
 });
 
-// directories
+// 創建 / 刪除資料夾
 if (!fs.existsSync('./assets')) {
   fs.mkdir('./assets', err => {
     if (err) {
@@ -36,7 +34,7 @@ if (!fs.existsSync('./assets')) {
   });
 }
 
-// deleting files
+// 刪除檔案
 if (fs.existsSync('./docs/deleteme.txt')) {
   fs.unlink('./docs/deleteme.txt', err => {
     if (err) {

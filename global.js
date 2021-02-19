@@ -4,7 +4,7 @@ const speak = () => {
 
 speak();
 
-// Global Object
+// 全域物件
 
 // console.log(global);
 
@@ -23,6 +23,3 @@ const int = setInterval(() => {
 
 console.log(__dirname);
 console.log(__filename);
-
-// no access to DOM methods
-console.log(document.querySelector);
