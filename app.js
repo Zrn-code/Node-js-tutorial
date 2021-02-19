@@ -6,17 +6,17 @@ const Blog = require('./models/blog');
 // express app
 const app = express();
 
-// connect to mongodb & listen for requests
+// 連結到MongoDB & 聆聽請求
 const dbURI = "mongodb+srv://zrn:0104@note.ag3er.mongodb.net/Note?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
   .catch(err => console.log(err));
 
-// register view engine
+// 設定預覽引擎
 app.set('view engine', 'ejs');
 
-// middleware & static files
+// middleware & 動態資料
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use((req, res, next) => {
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// mongoose & mongo tests
+// mongoose & mongo 測試
 app.get('/add-blog', (req, res) => {
   const blog = new Blog({
     title: 'new blog',
@@ -52,7 +52,7 @@ app.get('/all-blogs', (req, res) => {
 });
 
 app.get('/single-blog', (req, res) => {
-  Blog.findById('5ea99b49b8531f40c0fde689')
+  Blog.findById('601566b7e4f9b2000457f02a')
     .then(result => {
       res.send(result);
     })
@@ -69,7 +69,7 @@ app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
 
-// blog routes
+// blog 路徑
 app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 });
@@ -84,7 +84,7 @@ app.get('/blogs', (req, res) => {
     });
 });
 
-// 404 page
+// 404 頁面
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
