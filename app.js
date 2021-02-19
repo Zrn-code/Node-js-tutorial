@@ -4,13 +4,13 @@ const morgan = require('morgan');
 // express app
 const app = express();
 
-// listen for requests
+// 聆聽請求
 app.listen(3000);
 
-// register view engine
+// 設定預覽引擎
 app.set('view engine', 'ejs');
 
-// middleware & static files
+// middleware & 動態資料
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -50,7 +50,7 @@ app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 });
 
-// 404 page
+// 404 頁面
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
