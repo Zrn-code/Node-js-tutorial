@@ -3,7 +3,7 @@ const express = require('express');
 // express app
 const app = express();
 
-// listen for requests
+// 聆聽請求
 app.listen(3000);
 
 app.get('/', (req, res) => {
@@ -16,12 +16,12 @@ app.get('/about', (req, res) => {
   res.sendFile('./views/about.html', { root: __dirname });
 });
 
-// redirects
+// 重新導向
 app.get('/about-us', (req, res) => {
   res.redirect('/about');
 });
 
-// 404 page
+// 404 頁面
 app.use((req, res) => {
   res.status(404).sendFile('./views/404.html', { root: __dirname });
 });
